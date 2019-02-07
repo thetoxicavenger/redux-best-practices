@@ -7,3 +7,11 @@
 `npm run start-server`
 
 Don't forget to install dependencies!
+
+# Agenda
+- app overview √
+- using combineReducers √
+- let's add the getUsers() thunk! √
+- adding loading and error actions to thunks 
+- normalize API data
+    - https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape

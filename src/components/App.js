@@ -1,45 +1,35 @@
 import React from 'react';
-import { Container, Row } from 'reactstrap'
+import { Container } from 'reactstrap'
 import Episode from './Episode'
 import { getEpisodes, getPosts } from '../redux/actions'
 import { connect } from 'react-redux'
+import EpisodesListContainer from '../redux/containers/EpisodesListContainer';
+import Nav from './Nav';
+import PostsListContainer from '../redux/containers/PostsListContainer';
+import UsersListContainer from '../redux/containers/UsersListContainer';
 
 class App extends React.Component {
-  componentDidMount = () => {
-    this.props.getEpisodes()
-    this.props.getPosts("http://localhost:9000/api/posts")
+  state = {
+    currentView: "episodes"
+  }
+  handleNavChange = viewName => {
+    this.setState({
+      currentView: viewName
+    })
   }
   render = () => {
-    const episodes = this.props.episodes.length ? this.props.episodes.map(episode => <Episode key={episode.id} {...episode} />) : null
     return (
       <Container fluid>
-        <h1>Episodes</h1>
-        <Row>
-          {episodes}
-        </Row>
-        <Row>
-
-        </Row>
+        <Nav 
+          handleClick={this.handleNavChange}
+          selected={this.state.currentView}
+        />
+        {this.state.currentView === "episodes" && <EpisodesListContainer />}
+        {this.state.currentView === "posts" && <PostsListContainer />}
+        {this.state.currentView === "users" && <UsersListContainer />}
       </Container>
     )
   }
 }
 
-const mapStateToProps = ({ episodes }) => ({
-  episodes
-})
-
-const mapDispatchToProps = dispatch => ({
-  getEpisodes: () => {
-    dispatch(
-      getEpisodes()
-    )
-  },
-  getPosts: (url) => {
-    dispatch(
-      getPosts(url)
-    )
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

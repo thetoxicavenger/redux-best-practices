@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "id": "0",
+            "firstName": "Francesco",
+            "lastName": "Pascuzzi",
+            "userName": "Chonke",
+            "email": "chunkyyyy@gmail.com",
+            "phone": "520-999-4488"
+        },
+        {
+            "id": "1",
+            "firstName": "Mitchell",
+            "lastName": "Cravens",
+            "userName": "markelle",
+            "email": "mitchyyyy@gmail.com",
+            "phone": "520-225-7888"
+        }
+    ]
+}
